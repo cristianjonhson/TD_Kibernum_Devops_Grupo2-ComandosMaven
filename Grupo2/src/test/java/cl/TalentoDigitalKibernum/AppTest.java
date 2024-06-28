@@ -35,4 +35,9 @@ public class AppTest
     {
         assertTrue( true );
     }
+
+    public void testConcat() {
+        App app = new App();
+        assertEquals("abd", app.arrayString());
+    }
 }
