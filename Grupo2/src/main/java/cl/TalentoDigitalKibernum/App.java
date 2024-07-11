@@ -12,6 +12,8 @@ public class App
     {
         System.out.println( "Hello Maven-Jenkins Grupo2 :D" );
 
+        System.out.println( "prueba cristian cambio a jenkins" );
+
         String[] letters = {"a", "b", "d"};
         Arrays.asList(letters).forEach( e -> System.out.println( e ) );
     }
