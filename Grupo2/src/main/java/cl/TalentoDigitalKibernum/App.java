@@ -20,3 +20,4 @@ public class App
         return Arrays.asList( "a", "b", "d" ).stream().collect(Collectors.joining(""));
     }
 }
+/** comentando comentando **/
