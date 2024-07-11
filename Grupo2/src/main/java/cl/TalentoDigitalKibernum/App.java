@@ -14,6 +14,8 @@ public class App
 
         System.out.println( "prueba cristian cambio a jenkins" );
 
+        System.out.println( "Gabriel paso por acá" );
+        
         String[] letters = {"a", "b", "d"};
         Arrays.asList(letters).forEach( e -> System.out.println( e ) );
     }
