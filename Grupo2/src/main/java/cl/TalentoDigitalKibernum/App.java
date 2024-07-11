@@ -4,7 +4,7 @@ import java.util.stream.Collectors;
 
 /**
  * Hello world!
- *
+ * Hallo
  */
 public class App 
 {
