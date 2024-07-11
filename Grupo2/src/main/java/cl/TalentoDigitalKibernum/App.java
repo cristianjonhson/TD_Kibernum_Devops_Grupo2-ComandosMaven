@@ -10,7 +10,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello Maven Grupo2!" );
+        System.out.println( "Hello Maven-Jenkins Grupo2!" );
 
         String[] letters = {"a", "b", "d"};
         Arrays.asList(letters).forEach( e -> System.out.println( e ) );
