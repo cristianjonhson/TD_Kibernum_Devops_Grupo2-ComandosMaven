@@ -11,7 +11,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 // Clonar el repositorio
-                git url: 'https://github.com/usuario/proyecto.git', branch: 'master'
+                git url: 'https://github.com/cristianjonhson/TD_Kibernum_Devops_Grupo2-ComandosMaven.git', branch: 'master'
             }
         }
         
