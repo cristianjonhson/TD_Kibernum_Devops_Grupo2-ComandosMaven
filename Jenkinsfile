@@ -3,7 +3,7 @@ pipeline {
 
   environment {
     MAVEN_HOME = tool 'Maven 3' // Define tu herramienta Maven configurada en Jenkins
-    JAVA_HOME = tool 'JDK 1.8' // Define tu herramienta JDK configurada en Jenkins
+    JAVA_HOME = tool 'jdk 17' // Define tu herramienta JDK configurada en Jenkins
     PATH = "${MAVEN_HOME}/bin:${JAVA_HOME}/bin:${env.PATH}"
   }
 
