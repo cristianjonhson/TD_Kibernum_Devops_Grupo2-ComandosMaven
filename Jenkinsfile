@@ -34,12 +34,12 @@ pipeline {
         }
       }
     }
-
+  }
     post {
       always {
         // Limpieza de archivos temporales
         cleanWs()
-      }
+      
     }
   }
 }
