@@ -18,7 +18,7 @@ pipeline {
     stage('Build') {
       steps {
         // Construir el proyecto con Maven
-        sh 'mvn clean install'
+        sh 'mvn -f Grupo2/pom.xml clean install'
       }
     }
 
