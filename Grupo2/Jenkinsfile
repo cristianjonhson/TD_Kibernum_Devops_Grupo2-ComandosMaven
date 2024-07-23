@@ -27,7 +27,6 @@ pipeline {
                   -Dsonar.token=sqp_4fbd067319369be51143812de7acab21f4ff65d3"
                 }
             }
-            }
         }
         stage('Quality Gate') {
             steps {
