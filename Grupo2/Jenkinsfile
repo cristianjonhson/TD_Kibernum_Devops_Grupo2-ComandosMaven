@@ -1,45 +1,34 @@
 pipeline {
-  agent any
-
-  environment {
-    MAVEN_HOME = tool 'Maven 3' // Define tu herramienta Maven configurada en Jenkins
-    JAVA_HOME = tool 'jdk 17' // Define tu herramienta JDK configurada en Jenkins
-    PATH = "${MAVEN_HOME}/bin:${JAVA_HOME}/bin:${env.PATH}"
-  }
-
-  stages {
-    stage('Checkout') {
-      steps {
-        // Clonar el repositorio
-        git url: 'https://github.com/cristianjonhson/TD_Kibernum_Devops_Grupo2-ComandosMaven.git', branch: 'master'
-      }
+    agent any
+    environment {
+        // Define the SonarQube server to use
+        SONARQUBE_URL = 'http://localhost:9000'
     }
-
-    stage('Build') {
-      steps {
-        // Construir el proyecto con Maven
-        sh 'mvn -f Grupo2/pom.xml clean install'
-      }
-    }
-
-    stage('Test') {
-      steps {
-        // Ejecutar pruebas con Maven
-        sh 'mvn -f Grupo2/pom.xml test'
-      }
-      post {
-        always {
-          // Publicar resultados de pruebas
-          junit '**/target/surefire-reports/*.xml'
+    stages {
+        stage('Build') {
+            steps {
+                // Comandos de construcción
+                sh 'mvn clean install'
+            }
         }
-      }
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('http://localhost:9000') {
+                    // Ejecutar el análisis de SonarQube
+                    sh 'mvn sonar:sonar'
+                }
+            }
+        }
+        stage('Quality Gate') {
+            steps {
+                script {
+                    // Verificar la calidad del código
+                    def qg = waitForQualityGate()
+                    if (qg.status != 'OK') {
+                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                    }
+                }
+            }
+        }
     }
-  }
-    post {
-      always {
-        // Limpieza de archivos temporales
-        cleanWs()
-      
-    }
-  }
 }
