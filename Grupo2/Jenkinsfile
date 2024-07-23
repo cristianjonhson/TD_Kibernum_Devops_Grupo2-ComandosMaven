@@ -3,7 +3,7 @@ pipeline {
     
     environment {
         // Define el SonarQube server a utilizar
-        //SONARQUBE_URL = 'http://localhost:9000'
+        SONARQUBE_URL = 'http://localhost:9000'
         scannerHome = tool 'sonarqube-10.6.0.92116'
     }
     
@@ -18,12 +18,13 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 // Ejecutar el análisis de SonarQube
-                withSonarQubeEnv('http://localhost:9000') {
-                    sh 'mvn -f Grupo2/pom.xml clean verify sonar:sonar \
+                withSonarQubeEnv('sonarqube-10.6.0.92116') { // Asegúrate de que el nombre coincide con la configuración de Jenkins
+                    sh '${scannerHome}/bin/sonar-scanner \
                     -Dsonar.projectKey=ComandosMaven \
                     -Dsonar.projectName="ComandosMaven" \
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.token=sqp_4fbd067319369be51143812de7acab21f4ff65d3'
+                    -Dsonar.host.url=${SONARQUBE_URL} \
+                    -Dsonar.token=sqp_4fbd067319369be51143812de7acab21f4ff65d3 \
+                    -Dsonar.maven.version=3.9.0'
                 }
             }
         }
