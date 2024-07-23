@@ -3,8 +3,8 @@ pipeline {
     
     environment {
         // Define el SonarQube server a utilizar
-        SONARQUBE_URL = 'http://localhost:9000'
-        //scannerHome = tool 'sonarqube-10.6.0.92116'
+        //SONARQUBE_URL = 'http://localhost:9000'
+        scannerHome = tool 'sonarqube-10.6.0.92116'
     }
     
     stages {
