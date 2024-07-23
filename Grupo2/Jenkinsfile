@@ -1,10 +1,12 @@
 pipeline {
     agent any
+    
     environment {
-        // Define the SonarQube server to use
-        //SONARQUBE_URL = 'http://localhost:9000'
+        // Define el SonarQube server a utilizar
+        // SONARQUBE_URL = 'http://localhost:9000'
         scannerHome = tool 'sonarqube-10.6.0.92116'
     }
+    
     stages {
         stage('Build') {
             steps {
@@ -12,22 +14,20 @@ pipeline {
                 sh 'mvn -f Grupo2/pom.xml clean install'
             }
         }
+        
         stage('SonarQube Analysis') {
             steps {
-                //withSonarQubeEnv('http://localhost:9000') {
-                    // Ejecutar el análisis de SonarQube
-                    //sh 'mvn -f Grupo2/pom.xml sonar:sonar'
-                //}
-                echo 'Sonar Analysis ASDASDASD'
-                withSonarQubeEnv('sonarqube-10.6.0.92116'){
-                  sh "mvn clean verify sonar:sonar \
-                  -Dsonar.projectKey=ComandosMaven \
-                  -Dsonar.projectName='ComandosMaven' \
-                  -Dsonar.host.url=http://localhost:9000 \
-                  -Dsonar.token=sqp_4fbd067319369be51143812de7acab21f4ff65d3"
+                // Ejecutar el análisis de SonarQube
+                withSonarQubeEnv('sonarqube-10.6.0.92116') {
+                    sh 'mvn -f Grupo2/pom.xml clean verify sonar:sonar \
+                    -Dsonar.projectKey=ComandosMaven \
+                    -Dsonar.projectName="ComandosMaven" \
+                    -Dsonar.host.url=http://localhost:9000 \
+                    -Dsonar.token=sqp_4fbd067319369be51143812de7acab21f4ff65d3'
                 }
             }
         }
+        
         stage('Quality Gate') {
             steps {
                 script {
