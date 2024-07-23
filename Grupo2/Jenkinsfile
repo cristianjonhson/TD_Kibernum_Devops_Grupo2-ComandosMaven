@@ -8,14 +8,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Comandos de construcción
-                sh 'mvn clean install'
+                sh 'mvn -f Grupo2/pom.xml clean install'
             }
         }
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv('http://localhost:9000') {
                     // Ejecutar el análisis de SonarQube
-                    sh 'mvn sonar:sonar'
+                    sh 'mvn -f Grupo2/pom.xml sonar:sonar'
                 }
             }
         }
