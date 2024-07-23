@@ -45,6 +45,12 @@
                     </archive>
                 </configuration>
             </plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>sonar-maven-plugin</artifactId>
+				<version>10.6.0.92116</version> <!-- Usa la versión que sea compatible con tu versión de SonarQube -->
+			</plugin>
         </plugins>
     </build>
 	
