@@ -24,7 +24,8 @@ pipeline {
                     -Dsonar.projectName="ComandosMaven" \
                     -Dsonar.host.url=${SONARQUBE_URL} \
                     -Dsonar.token=sqp_4fbd067319369be51143812de7acab21f4ff65d3 \
-                    -Dsonar.maven.version=3.9.0'
+                    -Dsonar.maven.version=3.9.0 \
+                    -Dsonar.java.binaries=Grupo2/target/classes'
                 }
             }
         }
