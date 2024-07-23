@@ -4,7 +4,7 @@ pipeline {
     environment {
         // Define el SonarQube server a utilizar
         // SONARQUBE_URL = 'http://localhost:9000'
-        scannerHome = tool 'sonarqube-10.6.0.92116'
+        //scannerHome = tool 'sonarqube-10.6.0.92116'
     }
     
     stages {
@@ -18,7 +18,7 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 // Ejecutar el análisis de SonarQube
-                withSonarQubeEnv('sonarqube-10.6.0.92116') {
+                withSonarQubeEnv('http://localhost:9000') {
                     sh 'mvn -f Grupo2/pom.xml clean verify sonar:sonar \
                     -Dsonar.projectKey=ComandosMaven \
                     -Dsonar.projectName="ComandosMaven" \
