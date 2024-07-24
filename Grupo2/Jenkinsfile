@@ -8,12 +8,12 @@ pipeline {
     }
     
     stages {
-        /*stage('Build') {
+        stage('Build') {
             steps {
                 // Comandos de construcción
                 sh 'mvn -f Grupo2/pom.xml clean install'
             }
-        }*/
+        }
         
         stage('SonarQube Analysis') {
             steps {
