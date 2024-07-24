@@ -1,5 +1,6 @@
 
-package cl.TalentoDigitalKibernum;
+package cl.talentodigitalkibernum;
+
 import java.util.Arrays;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
