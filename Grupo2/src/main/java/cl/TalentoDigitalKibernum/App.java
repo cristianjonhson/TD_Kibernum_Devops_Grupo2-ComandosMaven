@@ -1,27 +1,25 @@
+
 package cl.TalentoDigitalKibernum;
 import java.util.Arrays;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
-/**
- * Hello world!
- * Hallo
- */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello Maven-Jenkins Grupo2 :D" );
+public class App {
+  private static final Logger LOGGER = Logger.getLogger(App.class.getName());
 
-        System.out.println( "prueba cristian cambio a jenkins" );
+  public static void main( String[] args ) {
+    LOGGER.info("Hello Maven-Jenkins Grupo2 :D");
 
-        System.out.println( "Gabriel paso por acá again" );
-        
-        String[] letters = {"a", "b", "d"};
-        Arrays.asList(letters).forEach( e -> System.out.println( e ) );
-    }
+    LOGGER.info("prueba cristian cambio a jenkins");
 
-    public String arrayString() {
-        return Arrays.asList( "a", "b", "d" ).stream().collect(Collectors.joining(""));
-    }
+    LOGGER.info("Gabriel paso por acá again");
+    
+    String[] letters = {"a", "b", "d"};
+    Arrays.asList(letters).forEach( LOGGER::info );
+  }
+
+  public String arrayString() {
+    return Arrays.asList( "a", "b", "d" ).stream().collect(Collectors.joining(""));
+  }
 }
 /** comentando comentando **/

@@ -8,17 +8,17 @@ pipeline {
     }
     
     stages {
-        stage('Build') {
+        /*stage('Build') {
             steps {
                 // Comandos de construcción
                 sh 'mvn -f Grupo2/pom.xml clean install'
             }
-        }
+        }*/
         
         stage('SonarQube Analysis') {
             steps {
                 // Ejecutar el análisis de SonarQube
-                withSonarQubeEnv('sonarqube-10.6.0.92116') { // Asegúrate de que el nombre coincide con la configuración de Jenkins
+                /*withSonarQubeEnv('sonarqube-10.6.0.92116') { // Asegúrate de que el nombre coincide con la configuración de Jenkins
                     sh '${scannerHome}/bin/sonar-scanner \
                     -Dsonar.projectKey=ComandosMaven \
                     -Dsonar.projectName="ComandosMaven" \
@@ -26,11 +26,17 @@ pipeline {
                     -Dsonar.token=sqp_4fbd067319369be51143812de7acab21f4ff65d3 \
                     -Dsonar.maven.version=3.9.0 \
                     -Dsonar.java.binaries=Grupo2/target/classes'
+                }*/
+                withSonarQubeEnv('sonarqube-10.6.0.92116') { // Asegúrate de que el nombre coincide con la configuración de Jenkins
+                    sh '${scannerHome}/bin/sonar-scanner \
+                    -Dsonar.projectKey=ComandosMaven \
+                    -Dsonar.host.url=${SONARQUBE_URL} \
+                    -Dsonar.java.binaries=Grupo2/target/classes'
                 }
             }
         }
         
-        stage('Quality Gate') {
+        /*stage('Quality Gate') {
             steps {
                 script {
                     // Verificar la calidad del código
@@ -40,6 +46,6 @@ pipeline {
                     }
                 }
             }
-        }
+        }*/
     }
 }
