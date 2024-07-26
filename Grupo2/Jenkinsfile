@@ -34,8 +34,28 @@ pipeline {
         }
       }
     }
+
+    stage('Upload Artifact') {
+      steps {
+        nexusArtifactUploader(
+          nexusVersion: 'nexus3',
+          protocol: 'http',
+          nexusUrl: 'localhost:8081',
+          groupId: 'cl.TalentoDigitalKibernum',
+          version: "${env.BUILD_ID}-${env.BUILD_TIMESTAMP}",
+          repository: 'comandosmaven',
+          credentialsId: 'NexusLogin',
+          artifacts: [
+            [artifactId: 'Grupo2',
+            classifier: '',
+            file: 'Grupo2/target/Grupo2-1.0-SNAPSHOT.jar',
+            type: 'jar']
+          ]
+        )
+      }
   }
-    post {
+    
+  post {
       always {
         // Limpieza de archivos temporales
         cleanWs()
