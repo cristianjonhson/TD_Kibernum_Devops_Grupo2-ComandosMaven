@@ -5,7 +5,7 @@
 	<groupId>cl.TalentoDigitalKibernum</groupId>
 	<artifactId>Grupo2</artifactId>
 	<packaging>jar</packaging>
-	<version>1.0.3</version>
+	<version>1.0-SNAPSHOT</version>
 	<name>Grupo2</name>
 	<url>http://maven.apache.org</url>
 	<properties>
@@ -46,4 +46,12 @@
             </plugin>
         </plugins>
     </build>
+
+	<distributionManagement>
+		<repository>
+			<id>comandosmaven</id>
+			<url>http://localhost:8081/repository/comandosmaven/</url>
+		</repository>
+	</distributionManagement>
+
 </project>
