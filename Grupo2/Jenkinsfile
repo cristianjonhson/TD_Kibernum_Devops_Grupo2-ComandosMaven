@@ -44,8 +44,7 @@ pipeline {
         -Dpackaging=jar \
         -Dfile=Grupo2/target/Grupo2-1.0-SNAPSHOT.jar \
         -DgeneratePom=true \
-        -DrepositoryId=comandosmaven \
-        -Durl=http://localhost:8081/repository/comandosmaven/'
+        -DaltDeploymentRepository=comandosmaven::http://localhost:8081/repository/comandosmaven/'
       }
     }
   }
