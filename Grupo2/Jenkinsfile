@@ -47,6 +47,18 @@ pipeline {
         -DgeneratePom=true \
         -DaltDeploymentRepository=comandosmaven::http://localhost:8081/repository/comandosmaven/'
       }
+      steps {
+        // Ejecutar el script para desplegar el artefacto
+        sh 'mvn deploy:deploy-file 
+        -DgroupId=cl.TalentoDigitalKibernum \
+        -DartifactId=Grupo2 \
+        -Dversion=1.0.2 \
+        -Dpackaging=jar \
+        -Dfile=Grupo2/target/Grupo2-1.0-SNAPSHOT.jar \
+        -DgeneratePom=true \
+        -DrepositoryId=comandosmaven \
+        -Durl=http://localhost:8081/repository/comandosmaven/'
+      }
     }*/
   }
     
