@@ -46,12 +46,4 @@
             </plugin>
         </plugins>
     </build>
-
-	<distributionManagement>
-		<repository>
-			<id>comandosmaven</id>
-			<url>http://localhost:8081/repository/comandosmaven/</url>
-		</repository>
-	</distributionManagement>
-
 </project>
