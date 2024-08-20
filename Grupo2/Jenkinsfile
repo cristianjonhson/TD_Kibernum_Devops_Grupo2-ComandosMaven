@@ -23,7 +23,7 @@ pipeline {
     stage('Build') {
       steps {
         // Construir el proyecto con Maven
-        sh 'mvn -f Grupo2/pom.xml clean install'
+        sh 'mvn -f Grupo2/pom.xml clean package'
       }
     }
 
@@ -76,10 +76,10 @@ pipeline {
   }*/
   post {
     always{
-      echo 'Slack Notification desde Jenkinsfile'
+      echo 'Slack Notification desde Jenkinsfile para Pruebas Unitarias'
       slackSend channel: 'jenkins',
       color: COLOR_MAP[currentBuild.currentResult],
-      message: "*${currentBuild.currentResult}: Job ${env.JOB_NAME} (jenkinsfile) - build ${env.BUILD_NUMBER}\n More Info at: ${env.BUILD_URL}"
+      message: "Slack Notification desde Jenkinsfile para Pruebas Unitarias\n*${currentBuild.currentResult}: Job ${env.JOB_NAME} (jenkinsfile) - build ${env.BUILD_NUMBER}\n More Info at: ${env.BUILD_URL}"
     }
   }
 }
